@@ -7,5 +7,6 @@ urlpatterns = [
   path("api/coins/add/user", add_coin, name="add_coin"),
   path('api/user/signup', signup, name="signup"),
   path('api/user/login', login, name="login"),
-  path("viewer_list/", viewer_list, name="viewer_list")
+  path("viewer_list/", viewer_list, name="viewer_list"),
+  path('api/user/coins', get_coins_data, name="get_coins_data"),
 ]

@@ -42,6 +42,26 @@ def viewer_list(request):
 
   return render(request, "main/viewer_list.html", params)
 
+@api_view(["POST"])
+def get_coins_data(request):
+  username = request.data['username']
+  password = request.data['password']
+
+  data_check = Viewer.objects.filter(name = username, password=password)
+
+  if len(data_check) > 0:
+    data_check = data_check[0]
+    return Response({
+      "msg": "done",
+      "coins": data_check.coins
+    })
+    
+  else:
+    return Response({
+      "msg": "failed"
+    })
+
+
 def check_if_qr_code_valid(qr_uuid):
   data = QrCodes.objects.filter(uuid = qr_uuid)
 
