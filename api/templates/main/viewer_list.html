@@ -1,0 +1,23 @@
+{% extends "main/base.html" %}
+<!--  -->
+{%block content%}
+<div class="container-fluid">
+  <h1>Viwer List by Coin ranking</h1>
+  <table class="table" style="padding: 50px">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Coins</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for d in data %}
+      <tr>
+        <td>{{d.name}}</td>
+        <td>{{d.coins}}</td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+</div>
+{%endblock%}

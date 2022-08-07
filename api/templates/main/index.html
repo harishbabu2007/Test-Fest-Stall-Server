@@ -1,0 +1,55 @@
+{% extends "main/base.html" %}
+<!--  -->
+{%block content%}
+<div>
+  <h1>Qr Codes</h1>
+  <br />
+  <br />
+  <table class="table" style="padding: 50px">
+    <thead>
+      <tr>
+        <th scope="col">Qr code</th>
+        <th scope="col">Stall Name</th>
+        <th scope="col">Stall Location</th>
+        <th scope="col">UUID</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for qr in qr_code %}
+      <tr>
+        <td>
+          <a href="{{qr.image.url}}" target="_blank"
+            ><img src="{{qr.image.url}}"
+          /></a>
+        </td>
+        <td>{{qr.stall_name}}</td>
+        <td>@{{qr.stall_location}}</td>
+        <td>{{qr.uuid}}</td>
+      </tr>
+      {%endfor%}
+
+      <!-- <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr> -->
+    </tbody>
+  </table>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(function () {
+      $("tbody").each(function (elem, index) {
+        var arr = $.makeArray($("tr", this).detach());
+        arr.reverse();
+        $(this).append(arr);
+      });
+    });
+  </script>
+</div>
+{%endblock%}
